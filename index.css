@@ -1,0 +1,150 @@
+/* Reset some default browser styles */
+body, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply styles to the entire page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Apply styles to the team input container */
+.team-input {
+    margin-bottom: 20px;
+}
+
+.team-input label {
+    font-weight: bold;
+}
+
+.team-input input[type="text"], .team-input input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.team-input button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Apply styles to the timer containers */
+.timer-container {
+    display: inline-block;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.timer-label {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.timer-value {
+    font-size: 36px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.timer-button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Apply styles to the lap table containers */
+.lap-table-container {
+    display: inline-block;
+    vertical-align: top;
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    min-width: 500px;
+}
+
+.lap-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #333;
+    margin-top: 10px;
+}
+
+.lap-table th,
+.lap-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #333;
+}
+
+/* Style the alternate row background color */
+.lap-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Style hover effect for rows */
+.lap-table tbody tr:hover {
+    background-color: #ddd;
+}
+
+
+/* Style for input-group */
+.input-group {
+  margin-bottom: 15px; /* Add margin to separate input groups */
+  display: inline-block;
+  flex-direction: column; /* Display label on top of input */
+}
+
+/* Style for labels */
+.input-group label {
+  font-weight: bold;
+}
+
+/* Style for input fields */
+.input-group input[type="text"],
+.input-group input[type="number"] {
+  padding: 5px;
+  width: 220px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 20px;
+}
+
+/* Adjust the styling of the submit button if needed */
+.input-group button[type="submit"] {
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.input-group button[type="submit"]:hover {
+  background-color: #0056b3; /* Change color on hover */
+}

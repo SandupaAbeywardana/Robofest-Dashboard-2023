@@ -1,0 +1,72 @@
+/* Reset some default browser styles */
+body, h1 {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply styles to the entire page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 30px;
+    text-align: center;
+}
+
+/* Apply styles to the report container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Apply styles to the report title */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Apply styles to the report table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #333;
+}
+
+/* Apply styles to table headers */
+th {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Apply styles to table data cells */
+td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #333;
+}
+
+/* Style the alternate row background color */
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Style hover effect for rows */
+tr:hover {
+    background-color: #ddd;
+}
+
+/* Style for the search input field */
+#teamSearch {
+    width: 15%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: left; /* Left-align text inside the input field */
+    display: block; /* Make the input box a block-level element */
+}
