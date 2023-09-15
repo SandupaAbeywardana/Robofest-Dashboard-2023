@@ -3,6 +3,10 @@ let timer8min, timer5min, timer3min;
 let lapCounter5min = 1;
 let lapCounter3min = 1;
 
+// Timer for lap timer (3-minute lap timer)
+let lapTimer3min = 0; // Initialize lap timer for 3-minute timer to 0
+let lapTimerInterval3min = null; // Variable to hold the lap timer interval ID
+
 // Initialize timers
 function initializeTimers() {
   timer8min = createTimer("timer-8min", 8 * 60 * 1000); // 8 minutes in milliseconds
@@ -36,6 +40,10 @@ function updateTimerDisplay(timer) {
 // Start timer
 function startTimer(timer) {
   if (!timer.isRunning) {
+    // Reset lap timer
+    lapTimer3min = 0;
+    updateLapTimerDisplay();
+
     timer.intervalId = setInterval(() => {
       timer.duration -= 10; // Subtract 10 milliseconds
       updateTimerDisplay(timer);
@@ -69,43 +77,86 @@ function stopTimer(timer) {
   }
 }
 
-function handleLap(timer, currentTime, tableId) {
-  if (timer.lapStartTime !== null) {
-    timer.lapEndTime = currentTime;
-    const lapDuration = timer.lapEndTime - timer.lapStartTime;
-    const minutes = Math.floor(lapDuration / 60000);
-    const seconds = Math.floor((lapDuration % 60000) / 1000);
-    const milliseconds = (lapDuration % 1000).toString().padStart(3, "0");
+// Function to update and display the lap timer
+function updateLapTimerDisplay() {
+  const minutes = Math.floor(lapTimer3min / 60000);
+  const seconds = Math.floor((lapTimer3min % 60000) / 1000);
+  const milliseconds = (lapTimer3min % 1000).toString().padStart(3, "0");
+  document.getElementById("lap-timer-3min").textContent = `${minutes
+    .toString()
+    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${milliseconds}`;
+}
+
+// Lap start button click handler for the 3-minute timer
+document
+  .getElementById("lap-start-button-3min")
+  .addEventListener("click", () => {
+    if (timer3min.isRunning) {
+      // Reset lap timer
+      lapTimer3min = 0;
+      updateLapTimerDisplay();
+
+      lapTimerInterval3min = setInterval(() => {
+        lapTimer3min += 10; // Increment lap timer by 10 milliseconds
+        updateLapTimerDisplay();
+      }, 10);
+    }
+  });
+
+// Lap end button click handler for the 3-minute timer
+document.getElementById("lap-end-button-3min").addEventListener("click", () => {
+  if (lapTimerInterval3min !== null) {
+    clearInterval(lapTimerInterval3min);
+    lapTimerInterval3min = null;
+
+    // Record lap timer to the 3-minute table
+    const minutes = Math.floor(lapTimer3min / 60000);
+    const seconds = Math.floor((lapTimer3min % 60000) / 1000);
+    const milliseconds = (lapTimer3min % 1000).toString().padStart(3, "0");
 
     const lapTable = document
-      .getElementById(tableId)
+      .getElementById("lap-table-3min")
       .getElementsByTagName("tbody")[0];
     const newRow = lapTable.insertRow();
     const lapCell = newRow.insertCell(0);
     const timeCell = newRow.insertCell(1);
 
-    lapCell.innerHTML = timer.lapCounter; // Use the lapCounter from the timer object
+    lapCell.innerHTML = lapCounter3min; // Use the lapCounter for 3-minute timer
     timeCell.innerHTML = `${minutes.toString().padStart(2, "0")}:${seconds
       .toString()
       .padStart(2, "0")}.${milliseconds}`;
 
-    timer.lapCounter++; // Increment the lap counter on the timer object
-    timer.lapStartTime = timer.lapEndTime;
+    lapCounter3min++; // Increment the lap counter for 3-minute timer
   }
-}
+});
 
-// Lap button click handler
-function handleLapButton(timerId) {
-  return () => {
-    const currentTime = new Date().getTime();
+// Lap button click handler for the 5-minute timer (old logic)
+document.getElementById("lap-button-5min").addEventListener("click", () => {
+  const currentTime = new Date().getTime();
 
-    if (timerId === "timer-5min") {
-      handleLap(timer5min, currentTime, "lap-table-5min");
-    } else if (timerId === "timer-3min") {
-      handleLap(timer3min, currentTime, "lap-table-3min");
-    }
-  };
-}
+  if (timer5min.lapStartTime !== null) {
+    timer5min.lapEndTime = currentTime;
+    const lapDuration = timer5min.lapEndTime - timer5min.lapStartTime;
+    const minutes = Math.floor(lapDuration / 60000);
+    const seconds = Math.floor((lapDuration % 60000) / 1000);
+    const milliseconds = (lapDuration % 1000).toString().padStart(3, "0");
+
+    const lapTable = document
+      .getElementById("lap-table-5min")
+      .getElementsByTagName("tbody")[0];
+    const newRow = lapTable.insertRow();
+    const lapCell = newRow.insertCell(0);
+    const timeCell = newRow.insertCell(1);
+
+    lapCell.innerHTML = timer5min.lapCounter; // Use the lapCounter from the timer object
+    timeCell.innerHTML = `${minutes.toString().padStart(2, "0")}:${seconds
+      .toString()
+      .padStart(2, "0")}.${milliseconds}`;
+
+    timer5min.lapCounter++; // Increment the lap counter on the timer object
+    timer5min.lapStartTime = timer5min.lapEndTime;
+  }
+});
 
 // Start/Stop buttons click handlers
 document.getElementById("start-5min").addEventListener("click", () => {
@@ -124,14 +175,6 @@ document.getElementById("stop-3min").addEventListener("click", () => {
   stopTimer(timer3min);
   stopTimer(timer8min);
 });
-
-// Lap buttons click handlers
-document
-  .getElementById("lap-button-5min")
-  .addEventListener("click", handleLapButton("timer-5min"));
-document
-  .getElementById("lap-button-3min")
-  .addEventListener("click", handleLapButton("timer-3min"));
 
 // Initialize timers when the page loads
 initializeTimers();

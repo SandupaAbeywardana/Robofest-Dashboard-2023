@@ -58,7 +58,14 @@ body {
     font-size: 36px;
     font-weight: bold;
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.lap-timer-value {
+    font-size: 20px;
+    font-weight: normal;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .timer-button {

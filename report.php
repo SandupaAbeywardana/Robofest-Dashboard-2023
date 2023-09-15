@@ -46,7 +46,7 @@
             foreach ($lapTimes5min as $index => $lapTime) {
                 $lapNumber = $index + 1;
                 if ($lapTime === $minTime5min) {
-                    echo "<span class='min-time'>" . "Lap $lapNumber: " . htmlspecialchars($lapTime) . "</span><br>";
+                    echo "<span>" . "Lap $lapNumber: " . htmlspecialchars($lapTime) . "</span><br>";
                 } else {
                     echo "Lap $lapNumber: " . htmlspecialchars($lapTime) . "<br>";
                 }

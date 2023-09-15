@@ -45,7 +45,7 @@
 
     <div class="timer-column">
         <div class="timer-container">
-            <h2 class="timer-label">8-Minute Timer:</h2>
+            <h2 class="timer-label" style="margin-top: 70px;">8-Minute Timer:</h2>
             <span class="timer-value" id="timer-8min">08:00:000</span>
             <div>
                 <button class="timer-button" id="start-8min" style="visibility: hidden;">Start</button>
@@ -55,8 +55,8 @@
         </div>
         <!-- 5-Minute Timer -->
         <div class="timer-container">
-            <h2 class="timer-label">5-Minute Timer:</h2>
-            <span class="timer-value" id="timer-5min">05:00:000</span>
+            <h2 class="timer-label" style="margin-top: 50px;">5-Minute Timer:</h2>
+            <span class="timer-value" id="timer-5min" style="margin-bottom: 30px;">05:00:000</span>
             <div>
                 <button class="timer-button" id="start-5min">Start</button>
                 <button class="timer-button" id="stop-5min">Stop</button>
@@ -68,12 +68,13 @@
         <div class="timer-container">
             <h2 class="timer-label">3-Minute Timer:</h2>
             <span class="timer-value" id="timer-3min">03:00:000</span>
+            <span>LapTimer<span class="lap-timer-value" id="lap-timer-3min">00:00:000</span></span>
             <div>
                 <button class="timer-button" id="start-3min">Start</button>
                 <button class="timer-button" id="stop-3min">Stop</button>
-                <button class="timer-button" id="lap-button-3min">Lap</button>
-                <!-- <button class="timer-button" id="lap-button-3min">Lap Start</button>
-                <button class="timer-button" id="lap-button-3min">Lap End</button> -->
+                <!-- <button class="timer-button" id="lap-button-3min">Lap</button> -->
+                <button class="timer-button" id="lap-start-button-3min">Lap Start</button>
+                <button class="timer-button" id="lap-end-button-3min">Lap End</button>
             </div>
         </div>
     </div>
