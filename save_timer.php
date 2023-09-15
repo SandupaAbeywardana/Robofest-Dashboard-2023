@@ -25,6 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($stmt->execute()) {
         echo "Data saved successfully!";
+        echo "<script>window.location.replace('/robofest23')</script>";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

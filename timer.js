@@ -10,8 +10,8 @@ let lapTimerInterval3min = null; // Variable to hold the lap timer interval ID
 // Initialize timers
 function initializeTimers() {
   timer8min = createTimer("timer-8min", 8 * 60 * 1000); // 8 minutes in milliseconds
-  timer5min = createTimer("timer-5min", 10 * 60 * 1000); // 5 minutes in milliseconds
-  timer3min = createTimer("timer-3min", 10 * 60 * 1000); // 3 minutes in milliseconds
+  timer5min = createTimer("timer-5min", 5 * 60 * 1000); // 5 minutes in milliseconds
+  timer3min = createTimer("timer-3min", 3 * 60 * 1000); // 3 minutes in milliseconds
 }
 
 // Create a timer

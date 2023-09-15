@@ -119,13 +119,21 @@
 
         function sortTable() {
             const rows = Array.from(tableBody.getElementsByTagName("tr"));
-            rows.shift(); // Remove the header row
+            // rows.shift(); // Remove the header row
 
-            // Sort rows based on the score column
+            // Sort rows based on the score column in descending order
             rows.sort((a, b) => {
-                const scoreA = parseFloat(a.lastElementChild.textContent);
-                const scoreB = parseFloat(b.lastElementChild.textContent);
-                return scoreA - scoreB;
+                const scoreA = parseFloat(a.lastElementChild.textContent.replace(/,/g, ''));
+                const scoreB = parseFloat(b.lastElementChild.textContent.replace(/,/g, ''));
+
+                // Handle cases where the scores are equal
+                if (scoreA === scoreB) {
+                    return 0;
+                } else if (scoreA < scoreB) {
+                    return 1; // Sort in descending order
+                } else {
+                    return -1; // Sort in descending order
+                }
             });
 
             // Reorder the rows in the table body
@@ -136,6 +144,11 @@
 
         // Sort the table when the page loads
         window.addEventListener("load", sortTable);
+
+        //refresh page every 5 seconds
+        setInterval(function() {
+            window.location.reload();
+        }, 5000);
     </script>
 
 </body>
